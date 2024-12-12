@@ -19,8 +19,10 @@ else ()
     message("Could not found Boost library!" FATAL_ERROR)
 endif ()
 
-add_executable(Messanger_Server main.cpp)
+add_executable(messanger_server server.cpp)
+add_executable(messanger_client client.cpp)
 
-target_link_libraries(Messanger_Server ${Boost_LIBRARIES} pthread)
+target_link_libraries(messanger_server ${Boost_LIBRARIES} pthread)
+target_link_libraries(messanger_client ${Boost_LIBRARIES} pthread)
 
 message(STATUS ...)

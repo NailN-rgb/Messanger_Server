@@ -1,6 +1,9 @@
 #pragma once
 #include <Messanger_Server/include/includeBoost.hpp>
 
+// Client Handler Class 
+#include <Messanger_Server/Server/ClientHandler/ClientHandler.hpp>
+
 class ServerStarter
 {
 
@@ -26,8 +29,8 @@ public:
         if(!error)
         {
             std::cout << "New client connected " << socket.remote_endpoint() << std::endl;
-            // create a client handler class
-            // socket->close();
+            
+            std::make_shared<ClientHandler>(std::move(socket))->start();
         }
         else
         {
